@@ -4,35 +4,23 @@
 ## Описание
 Реализация системы оплаты заказа с использованием слоистой архитектуры и DDD-lite.
 
-## Структура проекта 
-lab7/
-├── domain/
-│   ├── entities/
-│   │   ├── __init__.py
-│   │   ├── order.py
-│   │   └── order_line.py
-│   └── value_objects/
-│       ├── __init__.py
-│       └── money.py
-├── application/
-│   ├── interfaces/
-│   │   ├── __init__.py
-│   │   ├── repository.py
-│   │   └── payment_gateway.py
-│   └── use_cases/
-│       ├── __init__.py
-│       └── pay_order.py
-├── infrastructure/
-│   ├── repositories/
-│   │   ├── __init__.py
-│   │   └── in_memory_order_repository.py
-│   └── payment/
-│       ├── __init__.py
-│       └── fake_payment_gateway.py
-├── tests/
-│   ├── __init__.py
-│   ├── test_money.py
-│   ├── test_order.py
-│   └── test_pay_order_use_case.py
-├── requirements.txt
-└── README.md
+##Основные задачи:
+Разделение системы на 4 слоя: Domain, Application, Infrastructure, Tests
+Реализация доменной модели с агрегатами и value objects
+Создание use-case для оплаты заказа
+Написание тестов для проверки бизнес-правил
+
+
+##Требования к системе
+Бизнес-правила (инварианты):
+Нельзя оплатить пустой заказ
+Нельзя оплатить заказ повторно
+После оплаты нельзя менять строки заказа
+Итоговая сумма должна равняться сумме строк заказа
+
+
+##Доменная модель:
+Order - сущность (агрегат)
+OrderLine - часть агрегата Order
+Money - value object
+OrderStatus - перечисление статусов заказа
